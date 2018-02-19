@@ -7,7 +7,7 @@
     "react-dev": "webpack -d --watch",
     "server-dev": "nodemon server/index.js"
   },
-  "author": "Aaron Chan",
+  "author": "Adam Mateo",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.23.1",

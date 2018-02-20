@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request')
-var db = require('./database')
+// var db = require('../database')
 var app = express();
 
 app.use(express.static(__dirname + '/../client/dist'));
@@ -30,7 +30,7 @@ app.post('/savepost', function(req, res) {
       .then( (done) =>{
       	console.log('successfully save 1 item to the database!')
       	res.end()
-      }
+      })
 })
 
 var _PORT = (process.env.PORT || 3000)

@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request')
-// var db = require('../database')
+var db = require('../database/databaseHelpers').db
 var app = express();
 
 app.use(express.static(__dirname + '/../client/dist'));

@@ -10,7 +10,7 @@ class Form extends React.Component {
       address: '',
       city: '',
       state: '',
-      zipcode: '',
+      zipCode: '',
       isClaimed: false
     }
 
@@ -27,14 +27,14 @@ class Form extends React.Component {
 
   savePost(e) {
     e.preventDefault();
-    //console.log(this.state);
-    // axios.post('/savepost', this.state)
-    //   .then(function(response) {
-    //     console.log('Post has been saved.', response);
-    //   })
-    //   .catch(function(error) {
-    //     console.log('There was an error saving this post.', error);
-    //   })
+    console.log(this.state);
+    axios.post('/savepost', this.state)
+      .then(function(response) {
+        console.log('Post has been saved.', response);
+      })
+      .catch(function(error) {
+        console.log('There was an error saving this post.', error);
+      })
   }
  
   //Post form submission via axios
@@ -90,7 +90,7 @@ class Form extends React.Component {
         State:
         <input value={this.state.state} type="text" placeholder="State" onChange={(e) => {this.handleState(e)}} required></input>
         Zipcode:
-        <input value={this.state.zipcode} type="text" placeholder="Zip Code" onChange={(e) => {this.handleZipcode(e)}} required></input>
+        <input value={this.state.zipCode} type="text" placeholder="Zip Code" onChange={(e) => {this.handleZipcode(e)}} required></input>
         <button onClick={this.savePost} >Submit</button>
       </form>
     )

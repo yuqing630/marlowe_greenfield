@@ -26,9 +26,6 @@ CREATE TABLE post (
   state VARCHAR(2),
   zipCode VARCHAR(6),
   isClaimed BOOLEAN,
-  providerId INTEGER NOT NULL,
-  claimedBy INTEGER NOT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (providerId) REFERENCES provider(id),
-  FOREIGN KEY (claimedBy) REFERENCES claimer(id)
+  PRIMARY KEY (id)
 )
+

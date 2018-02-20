@@ -1,11 +1,24 @@
-DROP DATABASE IF EXISTS marlowe;
-
-CREATE DATABASE marlowe;
+CREATE DATABASE IF NOT EXISTS marlowe;
 
 USE marlowe;
 
+CREATE TABLE provider (
+  id INTEGER AUTO_INCREMENT NOT NULL,
+  providerUsername VARCHAR(16),
+  pPassword VARCHAR(16),
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE claimer (
+  id INTEGER AUTO_INCREMENT NOT NULL,
+  claimerUsername VARCHAR(16),
+  claimerZipCode INTEGER NOT NULL,
+  cPassword VARCHAR(16),
+  PRIMARY KEY (id)
+);
+
 CREATE TABLE post (
-  id INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  id INTEGER AUTO_INCREMENT NOT NULL,
   title VARCHAR(100),
   description VARCHAR(255),
   address VARCHAR(50),
@@ -15,19 +28,7 @@ CREATE TABLE post (
   isClaimed BOOLEAN,
   providerId INTEGER NOT NULL,
   claimedBy INTEGER NOT NULL,
+  PRIMARY KEY (id),
   FOREIGN KEY (providerId) REFERENCES provider(id),
   FOREIGN KEY (claimedBy) REFERENCES claimer(id)
-);
-
-CREATE TABLE provider (
-  id INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  providerUsername VARCHAR(16),
-  pPassword VARCHAR(16)
-);
-
-CREATE TABLE claimer (
-  id INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
-  claimerUsername VARCHAR(16),
-  claimerZipCode INTEGER NOT NULL,
-  cPassword VARCHAR(16)
 )

@@ -5,3 +5,5 @@ function ListItem(props) => (
   <ul>{props.description}</ul>
   <ul>{props.location}</ul>
 )
+
+export default ListItem;

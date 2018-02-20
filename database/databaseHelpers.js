@@ -26,8 +26,8 @@ function retrieveListings(req, res) {
 function saveListing(req, res) {
   var listing = req.body;
   
-  db.query(`INSERT INTO post (title, description, address, city, state, zip_code, provider_id) VALUES ("${listing.title}", "${listing.description}", "${listing.address}",
-   "${listing.city}", "${listing.state}", "${listing.zip_code}", null);`, (err, results) => {
+  db.query(`INSERT INTO post (title, description, address, city, state, zipCode, isClaimed, provider_id) VALUES ("${listing.title}", "${listing.description}", "${listing.address}",
+   "${listing.city}", "${listing.state}", "${listing.zipCode}", "${isClaimed}", null);`, (err, results) => {
     console.log(results);
     res.send();
   });
@@ -35,5 +35,5 @@ function saveListing(req, res) {
 }
 
 module.exports.db = connection;
-modules.export.saveListing = saveListing;
-modules.export.retrieveListings = retrieveListings;
+module.exports.saveListing = saveListing;
+module.exports.retrieveListings = retrieveListings;

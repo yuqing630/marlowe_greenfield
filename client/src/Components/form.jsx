@@ -17,7 +17,7 @@ class Form extends React.Component {
     return (
       <form>
         Username:
-        <input value={props.username} type="text" placeholder="Username"></input>
+        <input type="text" placeholder="Username"></input>
         Title:
         <input value={this.state.title} type="text" placeholder="Title"></input>
         Description:

@@ -70,7 +70,7 @@ class Form extends React.Component {
 
   handleZipcode(e) {
     this.setState({
-      zipcode: e.target.value
+      zipCode: e.target.value
     });
   }
 

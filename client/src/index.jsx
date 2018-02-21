@@ -56,6 +56,9 @@ class App extends React.Component {
       })
       .then(done => {
         this.retrievePosts();
+        this.setState({
+          show:!this.state.show
+        })
       });
   }
   render() {

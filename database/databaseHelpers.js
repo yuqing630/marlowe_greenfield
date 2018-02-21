@@ -41,6 +41,7 @@ if (err) console.log(err)
 connection.query(`CREATE TABLE IF NOT EXISTS post (
   id INTEGER AUTO_INCREMENT NOT NULL,
   title VARCHAR(100),
+  username VARCHAR(20),
   description VARCHAR(255),
   address VARCHAR(50),
   city VARCHAR(25),

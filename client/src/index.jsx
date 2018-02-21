@@ -12,8 +12,8 @@ class App extends React.Component {
   	super(props)
   	this.state = {
       posts: [],
-      featuredItem : {title: "FREE HOTDOGS",
-                      description: "Leftover from my carnival",
+      featuredItem : {title: null,
+                      description: null,
                       id: null
       }
   	}

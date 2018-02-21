@@ -48,9 +48,14 @@ class App extends React.Component {
     });
     console.log('this is state.posts: ', this.state.posts);
   }
-  //include componentDidMount function
-
-  //axios.get('/fetch') to retrieve posts
+  
+  handleClaim(claimedPost){
+    axios('/updateentry', {
+      postID: claimedPost.id
+    }).then((done) =>{
+      this.retrievePosts();
+    })
+  }
 
   render () {
   	return (

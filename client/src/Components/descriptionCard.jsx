@@ -6,7 +6,7 @@ const DescriptionCard = (props) => (
       <h2>{props.title}</h2>
 
       <ul>{props.description}</ul>
-      <button onClick={function() {props.handleClaim()}}>Claim</button>
+      <button onClick={() => props.claimHanlder(props.id)}>Claim</button>
     </div>   
 )
 

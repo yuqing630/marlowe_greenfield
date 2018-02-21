@@ -13,13 +13,15 @@ class App extends React.Component {
   	this.state = {
       posts: [],
       featuredItem : {title: "FREE HOTDOGS",
-                      description: "Leftover from my carnival"
+                      description: "Leftover from my carnival",
+                      id: null
       }
   	}
 
     this.retrievePosts = this.retrievePosts.bind(this);
     this.savePosts = this.savePosts.bind(this);
     this.changeFeatured = this.changeFeatured.bind(this);
+    this.handleClaim = this.handleClaim.bind(this);
   }
 
   componentDidMount() {
@@ -49,9 +51,10 @@ class App extends React.Component {
     console.log('this is state.posts: ', this.state.posts);
   }
   
-  handleClaim(claimedPost){
-    axios('/updateentry', {
-      postID: claimedPost.id
+  handleClaim(claimedPostID){
+    console.log('claimedPost clicked', claimedPostID)
+    axios.post('/updateentry', {
+      postID: claimedPostID
     }).then((done) =>{
       this.retrievePosts();
     })
@@ -63,10 +66,9 @@ class App extends React.Component {
       <h4>Our Fantastical Greenfield Project</h4>
         <List posts={this.state.posts} handleClick={this.changeFeatured}/>
         <Form />
-        <DescriptionCard title={this.state.featuredItem.title} description={this.state.featuredItem.description} />
+        <DescriptionCard title={this.state.featuredItem.title} description={this.state.featuredItem.description} id={this.state.featuredItem.id} claimHanlder={this.handleClaim}/>
       </div>
     )
   }
 }
-
 ReactDOM.render(<App />, document.getElementById('app'));

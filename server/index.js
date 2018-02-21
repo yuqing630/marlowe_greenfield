@@ -30,12 +30,7 @@ app.post("/savepost", function(req, res) {
   var listing = req.body
   console.log("saving to database...");
   db.query(
-    `INSERT INTO post (title, description, address, city, state, zipCode, isClaimed) VALUES ("${
-      listing.title
-    }", "${listing.description}", "${listing.address}",
-   "${listing.city}", "${listing.state}", "${listing.zipCode}", ${
-      listing.isClaimed
-    });`,
+    `INSERT INTO post (title, description, address, city, state, zipCode, isClaimed, createdAt) VALUES ("${listing.title}", "${listing.description}", "${listing.address}","${listing.city}", "${listing.state}", "${listing.zipCode}", ${listing.isClaimed}, ${Date.now()});`,
     (err, data) => {
       if (err) console.log("Error saving to database", err);
       console.log("succesfully saved to database");

@@ -22,6 +22,7 @@ class App extends React.Component {
     this.savePosts = this.savePosts.bind(this);
     this.changeFeatured = this.changeFeatured.bind(this);
     this.handleClaim = this.handleClaim.bind(this);
+    this.resetFormView = this.handleClaim.bind(this);
   }
 
   componentDidMount() {
@@ -52,6 +53,7 @@ class App extends React.Component {
     console.log("this is state.posts: ", this.state.posts);
   }
 
+
   handleClaim(claimedPostID) {
     console.log("claimedPost clicked", claimedPostID);
     axios
@@ -76,16 +78,15 @@ class App extends React.Component {
               />
             </ReactBootstrap.Col>
             <ReactBootstrap.Col className="pass" md={6}>
-              <Form />
+             {this.state.featuredItem.title === null ? <Form /> :  <DescriptionCard
+                title={this.state.featuredItem.title}
+                description={this.state.featuredItem.description}
+                id={this.state.featuredItem.id}
+                claimHanlder={this.handleClaim}
+            /> }
             </ReactBootstrap.Col>
           </ReactBootstrap.Row>
         </ReactBootstrap.Grid>
-        <DescriptionCard
-          title={this.state.featuredItem.title}
-          description={this.state.featuredItem.description}
-          id={this.state.featuredItem.id}
-          claimHanlder={this.handleClaim}
-        />
       </div>
     );
   }

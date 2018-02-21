@@ -1,10 +1,13 @@
 import React from 'react';
+import ListItem from './listItem.jsx'
 
-function List(props) => (
+const List = (props) =>  (
   <ul>
-    {props.items.map((item, i) => 
-       <ListItem title={item.title} description={item.description} location=({item.city} + ', ' + {item.state})/>
-    )}
-  </ul>
-);
+   { props.posts.map((post, idx) => 
+      <ListItem key={idx} post={post} title={post.title} description={post.description} city={post.city} state={post.state}/>
+ )}
+ </ul>
+)
+
+
 export default List;

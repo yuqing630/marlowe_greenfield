@@ -26,7 +26,6 @@ class App extends React.Component {
   componentDidMount() {
     this.retrievePosts();
     this.savePosts();
-    console.log("List Items:", this.state.posts);
   }
   changeFeatured(listItem) {
     this.setState({ featuredItem: listItem,
@@ -47,7 +46,7 @@ class App extends React.Component {
     this.setState({
       posts: data
     });
-    console.log("this is state.posts: ", this.state.posts);
+    this.retrievePosts();
   }
   handleClaim(claimedPostID) {
     console.log("claimedPost clicked", claimedPostID);

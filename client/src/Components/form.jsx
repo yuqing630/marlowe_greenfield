@@ -18,6 +18,9 @@ class Form extends React.Component {
     }
 
     this.savePost = this.savePost.bind(this);
+    this.clearFields = this.clearFields.bind(this); 
+    this.handleUsername = this.handleUsername.bind(this);
+    this.handleEmail = this.handleEmail.bind(this);
     this.handleTitle = this.handleTitle.bind(this);
     this.handleDescription = this.handleDescription.bind(this);
     this.handleAddress = this.handleAddress.bind(this);
@@ -38,8 +41,33 @@ class Form extends React.Component {
         console.log('There was an error saving this post.', error);
       })
   }
- 
-  //Post form submission via axios
+
+  clearFields() {
+    this.setState({
+      username: '',
+      emailAddress: '',
+      title: '',
+      description: '',
+      address: '',
+      city: '',
+      state: '',
+      zipCode: '',
+      isClaimed: false
+    });
+  }
+
+  handleUsername(e) {
+    this.setState({
+      username: e.target.value
+    });
+  }
+
+  handleEmail(e) {
+    this.setState({
+      email: e.target.value
+    });
+  }
+  
   handleTitle(e) {
     this.setState({
       title: e.target.value
@@ -82,6 +110,8 @@ class Form extends React.Component {
       <form>
         Username:
         <input type="text" placeholder="Username"></input>
+         Email:
+        <input value={this.state.email} type="text" placeholder="Username" onChange={(e) => {this.handleEmail(e)}}></input>
         Title:
         <input value={this.state.title} type="text" placeholder="Title" onChange={(e) => {this.handleTitle(e)}}required></input>
         Description:

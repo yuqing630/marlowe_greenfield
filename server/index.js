@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 //only relevant postings to the user
 app.get("/fetch", function(req, res) {
   console.log("retrieving from database...");
-  db.query("SELECT * FROM post", (err, results) => {
+  db.query("SELECT * FROM post WHERE isClaimed=false;", (err, results) => {
     if (err) console.log("FAILED to retrieve from database");
     else {
       console.log("succesfully retireved from database");
@@ -43,6 +43,17 @@ app.post("/savepost", function(req, res) {
     }
   );
 });
+
+//This route handles updating a post that has been claimed by the user 
+app.post('/updateentry', function(req, res){
+  console.log('updating entry...')
+  var postID = req.id
+  db.query(`"UPDATE post SET isClaimed=true WHERE id=${postID};"`)
+    .then( (finsihedUpdating) =>{
+      console.log("succesfully updated post: " + postID)
+      res.end();
+    })
+})
 
 var _PORT = process.env.PORT || 3000;
 app.listen(_PORT, function() {

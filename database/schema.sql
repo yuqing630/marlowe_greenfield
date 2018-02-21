@@ -26,6 +26,7 @@ CREATE TABLE post (
   state VARCHAR(2),
   zipCode VARCHAR(6),
   isClaimed BOOLEAN,
+  emailAddress VARCHAR(50),
+  createdAt INTEGER,
   PRIMARY KEY (id)
 )
-

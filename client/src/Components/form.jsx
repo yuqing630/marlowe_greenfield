@@ -1,10 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 
+
 class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      username: '',
+      emailAddress: '',
       title: '',
       description: '',
       address: '',

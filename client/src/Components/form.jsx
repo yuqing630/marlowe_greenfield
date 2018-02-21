@@ -75,6 +75,7 @@ class Form extends React.Component {
 
   render() {
     return (
+    <div className>  
       <form>
         Username:
         <input type="text" placeholder="Username"></input>
@@ -92,6 +93,7 @@ class Form extends React.Component {
         <input value={this.state.zipCode} type="text" placeholder="Zip Code" onChange={(e) => {this.handleZipcode(e)}} required></input>
         <button onClick={this.savePost} >Submit</button>
       </form>
+      </div>
     )
   }
 }

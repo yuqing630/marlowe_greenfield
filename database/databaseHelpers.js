@@ -1,5 +1,5 @@
 var mysql = require('mysql');
-var pg = require('pg');
+// var pg = require('pg');
 
 var connection = mysql.createConnection({
   host: 'greenfield-marlowe.coxryxwvinqh.us-east-1.rds.amazonaws.com',
@@ -17,6 +17,9 @@ connection.connect((err) => {
   }
 });
 
+// connection.query(`DROP TABLE IF EXISTS post`, (err, res) => {
+// if (err) console.log(err)
+// })
 
 connection.query(`CREATE TABLE IF NOT EXISTS provider (
 id INTEGER AUTO_INCREMENT NOT NULL,providerUsername VARCHAR(16),
@@ -44,6 +47,8 @@ connection.query(`CREATE TABLE IF NOT EXISTS post (
   state VARCHAR(2),
   zipCode VARCHAR(6),
   isClaimed BOOLEAN,
+  emailAddress VARCHAR(50),
+  createdAt INTEGER,
   PRIMARY KEY (id)
 )`, (err, res) => {
 if (err) console.log(err)

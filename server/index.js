@@ -47,12 +47,12 @@ app.post("/savepost", function(req, res) {
 //This route handles updating a post that has been claimed by the user 
 app.post('/updateentry', function(req, res){
   console.log('updating entry...')
-  var postID = req.id
-  db.query(`"UPDATE post SET isClaimed=true WHERE id=${postID};"`)
-    .then( (finsihedUpdating) =>{
-      console.log("succesfully updated post: " + postID)
-      res.end();
-    })
+  var postID = req.body.postID
+  db.query(`UPDATE post SET isClaimed=true WHERE id="${postID}"`, (err,data) =>{
+    if(err) console.log('Unable to claim item :(', err)
+    console.log('Claimned post with id: ' + postID+"!")
+    res.end()
+  })
 })
 
 var _PORT = process.env.PORT || 3000;

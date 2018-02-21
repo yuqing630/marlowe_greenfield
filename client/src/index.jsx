@@ -15,6 +15,7 @@ class App extends React.Component {
 
     this.retrievePosts = this.retrievePosts.bind(this);
     this.savePosts = this.savePosts.bind(this);
+    this.handleClaim = this.handleClaim.bind(this)
   }
 
   componentDidMount() {
@@ -38,6 +39,14 @@ class App extends React.Component {
       posts: data
     });
     console.log('this is state.posts: ', this.state.posts);
+  }
+
+  handleClaim(claimedPost){
+    axios('/updateentry', {
+      postID: claimedPost.id
+    }).then((done) =>{
+      this.retrievePosts();
+    })
   }
   //include componentDidMount function
 

@@ -12,8 +12,8 @@ class App extends React.Component {
   	super(props)
   	this.state = {
       posts: [],
-      featuredItem : {title: "FREE HOTDOGS",
-                      description: "Leftover from my carnival",
+      featuredItem : {title: null,
+                      description: null,
                       id: null
       }
   	}
@@ -50,7 +50,7 @@ class App extends React.Component {
     });
     console.log('this is state.posts: ', this.state.posts);
   }
-  
+
   handleClaim(claimedPostID){
     console.log('claimedPost clicked', claimedPostID)
     axios.post('/updateentry', {

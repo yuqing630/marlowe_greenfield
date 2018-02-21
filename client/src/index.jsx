@@ -50,7 +50,7 @@ class App extends React.Component {
     });
     console.log('this is state.posts: ', this.state.posts);
   }
-  
+
   handleClaim(claimedPostID){
     console.log('claimedPost clicked', claimedPostID)
     axios.post('/updateentry', {

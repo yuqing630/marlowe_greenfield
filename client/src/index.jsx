@@ -1,19 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import NavigationBar from "./components/navbar.jsx"
-import Maintron from "./components/jumbotron.jsx"
+import NavigationBar from "./components/navbar.jsx";
+import Maintron from "./components/jumbotron.jsx";
 import List from "./components/list.jsx";
 import Form from "./components/form.jsx";
 import DescriptionCard from "./components/descriptionCard.jsx";
 import LoginPage from "./components/login.jsx"
 import Signup from "./components/signup.jsx"
-import MapComponent from "./components/googleMaps.jsx"
 import axios from "axios";
-// import AnyComponent from './components/filename.jsx'
+import Trigger from "./components/responsiveButton.jsx";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      lgShow: false,
       posts: [],
       featuredItem: {
         title: null,
@@ -27,29 +28,17 @@ class App extends React.Component {
     this.changeFeatured = this.changeFeatured.bind(this);
     this.handleClaim = this.handleClaim.bind(this);
     this.resetFormView = this.handleClaim.bind(this);
+    this.lgShow = this.lgShow.bind(this);
+    this.lgClose = this.lgClose.bind(this);
   }
   componentDidMount() {
     this.retrievePosts();
     // this.savePosts();
   }
   changeFeatured(listItem) {
-    if(this.state.show === false){
-      this.setState({ featuredItem: listItem,
-        show: true
-      });
-    }else if(this.state.show === true){
-      if(this.state.featuredItem.id === listItem.id){
-        this.setState({
-          show:false
-        })
-        // console.log('this is clicked')
-      }else{
-        this.setState({ featuredItem: listItem,
-          show:true
-        })
-      }
-      // console.log(this.state.featuredItem, 'else if function', listItem)
-    }
+    this.setState({ featuredItem: listItem,
+                    show: !this.state.show
+     });
   }
   retrievePosts() {
     axios
@@ -63,8 +52,6 @@ class App extends React.Component {
         console.log("There was an error retrieving posts.", error);
       });
   }
-
-
   handleClaim(claimedPostID) {
     console.log("claimedPost clicked", claimedPostID);
     axios
@@ -78,8 +65,19 @@ class App extends React.Component {
         })
       });
   }
+  lgClose() {
+    this.setState({
+      lgShow: false
+    });
+    this.retrievePosts();
+  }
+  lgShow(){
+    this.setState({
+      lgShow: true
+    });
+  }
   render() {
-    console.log('this is the state of show', this.state.show)
+    console.log('this is the state of show', this.state.show);
     return (
       <div>
       <NavigationBar />
@@ -94,28 +92,20 @@ class App extends React.Component {
               />
             </ReactBootstrap.Col>
             <ReactBootstrap.Col className="pass" md={6}>
-             {this.state.show === false
-              ? <Form refresh={this.retrievePosts} />
+             {this.state.show === false 
+              ? <Form showModal={this.lgShow}/> 
               :  <DescriptionCard
-                    featuredItem = {this.state.featuredItem}
+                    featuredItem = {this.state.featuredItem} 
                     claimHandler={this.handleClaim}
                   /> }
             </ReactBootstrap.Col>
           </ReactBootstrap.Row>
         </ReactBootstrap.Grid>
-        <div className="map">
-        <MapComponent
-          isMarkerShown
-          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `400px` }} />}
-          mapElement={<div style={{ height: `100%` }}
-        />}
-        />
-        </div>
+        <Trigger show={this.state.lgShow} onHide={this.lgClose} />
       </div>
     );
   }
 }
+
 export default App
 ReactDOM.render(<LoginPage />, document.getElementById("app"));

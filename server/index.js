@@ -58,7 +58,7 @@ app.post('/updateentry', function(req, res){
 
 
 /************************************************************/
-//                   authentication 
+//                   authentication
 /************************************************************/
 app.post('/signup', function(req, res) {
   var sqlQuery = `INSERT INTO claimer (claimerUsername, claimerZipCode, cPassword) VALUES (?, ?, ?)`;

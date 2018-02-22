@@ -32,9 +32,23 @@ class App extends React.Component {
     // this.savePosts();
   }
   changeFeatured(listItem) {
-    this.setState({ featuredItem: listItem,
-                    show: !this.state.show
-     });
+    if(this.state.show === false){
+      this.setState({ featuredItem: listItem,
+        show: true
+      });
+    }else if(this.state.show === true){
+      if(this.state.featuredItem.id === listItem.id){
+        this.setState({
+          show:false
+        })
+        // console.log('this is clicked')
+      }else{
+        this.setState({ featuredItem: listItem,
+          show:true
+        })
+      }
+      // console.log(this.state.featuredItem, 'else if function', listItem)
+    }
   }
   retrievePosts() {
     axios
@@ -79,10 +93,10 @@ class App extends React.Component {
               />
             </ReactBootstrap.Col>
             <ReactBootstrap.Col className="pass" md={6}>
-             {this.state.show === false 
-              ? <Form refresh={this.retrievePosts} /> 
+             {this.state.show === false
+              ? <Form refresh={this.retrievePosts} />
               :  <DescriptionCard
-                    featuredItem = {this.state.featuredItem} 
+                    featuredItem = {this.state.featuredItem}
                     claimHandler={this.handleClaim}
                   /> }
             </ReactBootstrap.Col>

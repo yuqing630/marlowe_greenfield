@@ -8,6 +8,7 @@ var moment = require('moment');
 
 app.use(express.static(__dirname + "/../client/dist"));
 app.use(bodyParser.json());
+app.use(session({ secret: 'this-is-a-secret-token', cookie: {maxAge: 60000} }));
 
 // Due to express, when you load the page, it doesnt make a get request to '/', it simply serves up the dist folder
 
@@ -53,6 +54,10 @@ app.post('/updateentry', function(req, res){
   })
 })
 
+
+/************************************************************/
+//                   authentication 
+/************************************************************/
 app.post('/signup', function(req, res) {
   var sqlQuery = `INSERT INTO claimer (claimerUsername, claimerZipCode, cPassword) VALUES (?, ?, ?)`;
   var placeholderValues = [req.body.username, req.body.password, req.body.zipcode];
@@ -74,6 +79,7 @@ app.post('/login', function(req, res) {
       console.log("Failed to login")
     } else {
         req.session.regenerate((err) => {
+        req.session.username = req.body.username
         req.session.username = req.body.username
         });
       res.sendStatus(201);

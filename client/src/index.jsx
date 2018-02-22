@@ -73,10 +73,7 @@ class App extends React.Component {
             </ReactBootstrap.Col>
             <ReactBootstrap.Col className="pass" md={6}>
              {this.state.show === false ? <Form refresh={this.retrievePosts} /> :  <DescriptionCard
-                title={this.state.featuredItem.title}
-                description={this.state.featuredItem.description}
-                id={this.state.featuredItem.id}
-                claimHanlder={this.handleClaim}
+                featuredItem = {this.state.featuredItem} claimHandler={this.handleClaim}
             /> }
             </ReactBootstrap.Col>
           </ReactBootstrap.Row>

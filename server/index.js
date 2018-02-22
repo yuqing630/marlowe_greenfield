@@ -2,11 +2,14 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var request = require("request");
 var db = require("../database/databaseHelpers");
+var session = require('express-session')
 var app = express();
 var moment = require('moment');
 
 app.use(express.static(__dirname + "/../client/dist"));
 app.use(bodyParser.json());
+app.use(session({ secret: 'this-is-a-secret-token', cookie: {maxAge: 60000}, resave: true,  saveUninitialized: true }));
+
 
 // Due to express, when you load the page, it doesnt make a get request to '/', it simply serves up the dist folder
 
@@ -49,6 +52,39 @@ app.post('/updateentry', function(req, res){
     if(err) console.log('Unable to claim item :(', err)
     console.log('Claimned post with id: ' + postID+"!")
     res.end()
+  })
+})
+
+
+/************************************************************/
+//                   authentication 
+/************************************************************/
+app.post('/signup', function(req, res) {
+  var sqlQuery = `INSERT INTO claimer (claimerUsername, claimerZipCode, cPassword) VALUES (?, ?, ?)`;
+  var placeholderValues = ["adam", 10017, "1234"];
+  db.query(sqlQuery, placeholderValues, function(error) {
+    if (error) {
+      throw error;
+    } else {
+      res.end();
+    }
+  })
+})
+
+app.post('/login', function(req, res) {
+  var sqlQuery = `SELECT FROM claimer WHERE claimerUsername = "${req.body.username}" AND cPassword = "${req.body.password}"`;
+  db.query(sqlQuery, function(error, results) {
+    if (error) {
+      throw error;
+    } else if (results.length === 0) {
+      console.log("Failed to login")
+    } else {
+        req.session.regenerate((err) => {
+        req.session.username = req.body.username
+        req.session.username = req.body.username
+        });
+      res.send(0);
+    }
   })
 })
 

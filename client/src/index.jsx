@@ -5,6 +5,7 @@ import List from "./components/list.jsx";
 import Form from "./components/form.jsx";
 import DescriptionCard from "./components/descriptionCard.jsx";
 import LoginPage from "./components/login.jsx"
+import Signup from "./components/signup.jsx"
 import axios from "axios";
 // import AnyComponent from './components/filename.jsx'
 class App extends React.Component {
@@ -89,5 +90,5 @@ class App extends React.Component {
     );
   }
 }
-console.log('hello');
-ReactDOM.render(<App />, document.getElementById("app"));
+export default App
+ReactDOM.render(<LoginPage />, document.getElementById("app"));

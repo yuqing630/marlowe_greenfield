@@ -1,5 +1,9 @@
 import React, { Component } from "react";
+import ReactDOM from 'react-dom'
+import App from '../index.jsx'
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import axios from 'axios'
+
 
 export default class Login extends Component {
   constructor(props) {
@@ -9,6 +13,9 @@ export default class Login extends Component {
       email: "",
       password: ""
     };
+    this.validateForm =this.validateForm.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   validateForm() {
@@ -21,8 +28,19 @@ export default class Login extends Component {
     });
   }
 
-  handleSubmit(event){
-    event.preventDefault();
+  handleSubmit(e){
+    e.preventDefault();
+    axios.post('/login', {
+      username: this.state.email,
+      password: this.state.password
+    }).then(() => {
+      console.log("Successfully logged in")
+      this.setState({username: '', password: ''});
+      ReactDOM.render(<App />, document.getElementById("app"));
+    }).catch((error) => {
+      throw error;
+    })
+
   }
 
   render() {
@@ -51,6 +69,7 @@ export default class Login extends Component {
             bsSize="large"
             disabled={!this.validateForm()}
             type="submit"
+            onClick={this.handleSubmit}
           >
             Login
           </Button>

@@ -55,6 +55,7 @@ export default class Signup extends Component {
               onChange={this.handleChange}
               type="password"
             />
+            </FormGroup>
             <FormGroup controlId="zipcode" bsSize="large">
             <ControlLabel>Zipcode</ControlLabel>
             <FormControl
@@ -69,8 +70,7 @@ export default class Signup extends Component {
             disabled={!this.validateForm()}
             type="submit"
             onClick={this.handleSignup}
-          >
-            Sign up !
+          >Sign up !
           </Button>
         </form>
       </div>

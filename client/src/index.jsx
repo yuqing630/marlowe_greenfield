@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import NavigationBar from "./components/navbar.jsx"
 import List from "./components/list.jsx";
 import Form from "./components/form.jsx";
 import DescriptionCard from "./components/descriptionCard.jsx";
@@ -63,7 +64,7 @@ class App extends React.Component {
     console.log('this is the state of show', this.state.show)
     return (
       <div>
-        <h4>Our Fantastical Greenfield Project</h4>
+      <NavigationBar />
         <ReactBootstrap.Grid className="show-grid">
           <ReactBootstrap.Row>
             <ReactBootstrap.Col md={6}>

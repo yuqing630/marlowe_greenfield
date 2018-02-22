@@ -18,14 +18,14 @@ class App extends React.Component {
       show: false
     };
     this.retrievePosts = this.retrievePosts.bind(this);
-    this.savePosts = this.savePosts.bind(this);
+    // this.savePosts = this.savePosts.bind(this);
     this.changeFeatured = this.changeFeatured.bind(this);
     this.handleClaim = this.handleClaim.bind(this);
     this.resetFormView = this.handleClaim.bind(this);
   }
   componentDidMount() {
     this.retrievePosts();
-    this.savePosts();
+    // this.savePosts();
   }
   changeFeatured(listItem) {
     this.setState({ featuredItem: listItem,
@@ -36,18 +36,16 @@ class App extends React.Component {
     axios
       .get("/fetch")
       .then(results => {
-        this.savePosts(results.data);
+        this.setState({
+          posts: results.data
+        })
       })
       .catch(function(error) {
         console.log("There was an error retrieving posts.", error);
       });
   }
-  savePosts(data) {
-    this.setState({
-      posts: data
-    });
-    this.retrievePosts();
-  }
+
+
   handleClaim(claimedPostID) {
     console.log("claimedPost clicked", claimedPostID);
     axios
@@ -74,7 +72,7 @@ class App extends React.Component {
               />
             </ReactBootstrap.Col>
             <ReactBootstrap.Col className="pass" md={6}>
-             {this.state.show === false ? <Form /> :  <DescriptionCard
+             {this.state.show === false ? <Form refresh={this.retrievePosts} /> :  <DescriptionCard
                 title={this.state.featuredItem.title}
                 description={this.state.featuredItem.description}
                 id={this.state.featuredItem.id}

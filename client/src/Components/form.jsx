@@ -34,8 +34,9 @@ class Form extends React.Component {
   savePost(e) {
     e.preventDefault();
     axios.post('/savepost', this.state)
-      .then(function(response) {
+      .then( (response) =>{
         console.log('Post has been saved.', response);
+        this.props.refresh();
       })
       .catch(function(error) {
         console.log('There was an error saving this post.', error);

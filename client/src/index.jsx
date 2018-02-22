@@ -66,6 +66,7 @@ class App extends React.Component {
         <ReactBootstrap.Grid className="show-grid">
           <ReactBootstrap.Row>
             <ReactBootstrap.Col md={6}>
+            <h2> Recent Postings </h2>
               <List
                 posts={this.state.posts}
                 handleClick={this.changeFeatured}

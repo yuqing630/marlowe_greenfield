@@ -1,0 +1,23 @@
+.listItem {
+  padding-top: 1.8rem;
+  padding-bottom: 1.2rem;
+  display: flex;
+  border-color: #DCDEDD;
+  border-bottom: 0.1rem solid;
+  box-sizing: inherit;
+}
+
+.listHeader {
+  color: #282828;
+  fill: #282828;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 2.4rem;
+}
+
+.listDescription {
+  color: #282828;
+  fill: #282828;
+  font-size: 1.2rem;
+  line-height: 2.4rem;
+}

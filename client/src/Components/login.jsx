@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import ReactDOM from 'react-dom'
+import App from '../index.jsx'
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import axios from 'axios'
+
 
 export default class Login extends Component {
   constructor(props) {
@@ -33,6 +36,7 @@ export default class Login extends Component {
     }).then(() => {
       console.log("Successfully logged in")
       this.setState({username: '', password: ''});
+      ReactDOM.render(<App />, document.getElementById("app"));
     }).catch((error) => {
       throw error;
     })

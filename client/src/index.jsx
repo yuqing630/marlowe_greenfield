@@ -84,5 +84,5 @@ class App extends React.Component {
     );
   }
 }
-console.log('hello');
+export default App
 ReactDOM.render(<LoginPage />, document.getElementById("app"));

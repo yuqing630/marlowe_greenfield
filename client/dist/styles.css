@@ -21,3 +21,11 @@
   font-size: 1.2rem;
   line-height: 2.4rem;
 }
+
+.jumbotron {
+  text-align: center;
+  color: black;
+  height: 400px;
+  background-image: url('images/allHandsIn.jpg');
+  background-size: 100%;
+}

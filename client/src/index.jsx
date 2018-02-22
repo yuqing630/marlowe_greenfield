@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import NavigationBar from "./components/navbar.jsx"
+import Maintron from "./components/jumbotron.jsx"
 import List from "./components/list.jsx";
 import Form from "./components/form.jsx";
 import DescriptionCard from "./components/descriptionCard.jsx";
@@ -67,6 +68,7 @@ class App extends React.Component {
     return (
       <div>
       <NavigationBar />
+      <Maintron />
         <ReactBootstrap.Grid className="show-grid">
           <ReactBootstrap.Row>
             <ReactBootstrap.Col md={6}>

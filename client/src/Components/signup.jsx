@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import axios from 'axios'
 
 export default class Signup extends Component {
   constructor(props) {
@@ -10,7 +11,11 @@ export default class Signup extends Component {
       password: "",
        zipcode: ""
     };
+    this.validateForm = this.validateForm.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSignup = this.handleSignup.bind(this)
   }
+
 
   validateForm() {
     return this.state.username.length > 0 && this.state.password.length > 0;
@@ -55,6 +60,7 @@ export default class Signup extends Component {
               onChange={this.handleChange}
               type="password"
             />
+            </FormGroup>
             <FormGroup controlId="zipcode" bsSize="large">
             <ControlLabel>Zipcode</ControlLabel>
             <FormControl
@@ -69,8 +75,7 @@ export default class Signup extends Component {
             disabled={!this.validateForm()}
             type="submit"
             onClick={this.handleSignup}
-          >
-            Sign up !
+          >Sign up !
           </Button>
         </form>
       </div>

@@ -61,7 +61,7 @@ app.post('/updateentry', function(req, res){
 /************************************************************/
 app.post('/signup', function(req, res) {
   var sqlQuery = `INSERT INTO claimer (claimerUsername, claimerZipCode, cPassword) VALUES (?, ?, ?)`;
-  var placeholderValues = ["adam", 10017, "1234"];
+  var placeholderValues = [req.body.username, req.body.zipcode, req.body.password];
   db.query(sqlQuery, placeholderValues, function(error) {
     if (error) {
       throw error;
@@ -72,7 +72,8 @@ app.post('/signup', function(req, res) {
 })
 
 app.post('/login', function(req, res) {
-  var sqlQuery = `SELECT FROM claimer WHERE claimerUsername = "${req.body.username}" AND cPassword = "${req.body.password}"`;
+
+  var sqlQuery = `SELECT claimerUsername FROM claimer WHERE claimerUsername="${req.body.username}" AND cPassword ="${req.body.password}"`;
   db.query(sqlQuery, function(error, results) {
     if (error) {
       throw error;
@@ -81,9 +82,10 @@ app.post('/login', function(req, res) {
     } else {
         req.session.regenerate((err) => {
         req.session.username = req.body.username
-        req.session.username = req.body.username
+        console.log("session", req.session)
+        console.log("session username", req.session.username)
         });
-      res.send(0);
+      res.end()
     }
   })
 })

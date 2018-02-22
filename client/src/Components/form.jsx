@@ -20,7 +20,7 @@ class Form extends React.Component {
     }
 
     this.savePost = this.savePost.bind(this);
-    this.clearFields = this.clearFields.bind(this); 
+    this.clearFields = this.clearFields.bind(this);
     this.handleUsername = this.handleUsername.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
     this.handleTitle = this.handleTitle.bind(this);
@@ -73,7 +73,7 @@ class Form extends React.Component {
       emailAddress: e.target.value
     });
   }
-  
+
   handleTitle(e) {
     this.setState({
       title: e.target.value
@@ -138,7 +138,7 @@ class Form extends React.Component {
           <FormControl
             type="text"
             value={this.state.address}
-            placeholder="Stree Address"
+            placeholder="Street Address"
             onChange={(e) => {this.handleAddress(e)}}
           />
           <FormControl
@@ -179,4 +179,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form; 
+export default Form;

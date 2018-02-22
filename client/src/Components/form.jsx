@@ -111,8 +111,8 @@ class Form extends React.Component {
     return (
 
       <div className="form">
-      <form>
-
+          <form>
+          <div className="formFields">
           <ControlLabel>Working example with validation</ControlLabel>
           <FormControl
             type="text"
@@ -156,6 +156,7 @@ class Form extends React.Component {
             placeholder="ZipCode"
             onChange={(e) => {this.handleZipcode(e)}}
           />
+          </div>
            <div className="formButton"><Button onClick={this.savePost}>Submit</Button></div>
       </form>
       </div>

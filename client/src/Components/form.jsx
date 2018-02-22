@@ -128,12 +128,6 @@ class Form extends React.Component {
           />
           <FormControl
             type="text"
-            value={this.state.description}
-            placeholder="Description"
-            onChange={(e) => {this.handleDescription(e)}}
-          />
-          <FormControl
-            type="text"
             value={this.state.address}
             placeholder="Stree Address"
             onChange={(e) => {this.handleAddress(e)}}
@@ -152,9 +146,15 @@ class Form extends React.Component {
           />
           <FormControl
             type="text"
-            value={this.state.state}
+            value={this.state.zipCode}
             placeholder="ZipCode"
             onChange={(e) => {this.handleZipcode(e)}}
+          />
+          <FormControl style={{height: '125px'}}
+            type="text"
+            value={this.state.description}
+            placeholder="Description"
+            onChange={(e) => {this.handleDescription(e)}}
           />
           </div>
            <div className="formButton"><Button onClick={this.savePost}>Submit</Button></div>

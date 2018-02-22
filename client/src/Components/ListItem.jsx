@@ -8,8 +8,8 @@ const ListItem = (props) => {
     <div onClick={function() {console.log("clicked!!!!!");
          props.handleClick(props.post);           
                                                       }}>
-      <h2>{props.title}</h2>
-      <ul>{location}</ul>
+      <div className="listHeader">{props.title}</div>
+      <div className="listDescription">{location}</div>
     </div>
     </div>
   ) 

@@ -3,6 +3,7 @@ var bodyParser = require("body-parser");
 var request = require("request");
 var db = require("../database/databaseHelpers");
 var app = express();
+var moment = require('moment');
 
 app.use(express.static(__dirname + "/../client/dist"));
 app.use(bodyParser.json());
@@ -18,6 +19,7 @@ app.get("/fetch", function(req, res) {
     if (err) console.log("FAILED to retrieve from database");
     else {
       console.log("succesfully retireved from database");
+      // console.log(results)
       res.send(results);
     }
   });
@@ -30,7 +32,7 @@ app.post("/savepost", function(req, res) {
   var listing = req.body
   console.log("saving to database...");
   db.query(
-    `INSERT INTO post (title, description, address, city, state, zipCode, isClaimed, emailAddress, createdAt) VALUES ("${listing.title}", "${listing.description}", "${listing.address}","${listing.city}", "${listing.state}", "${listing.zipCode}", ${listing.isClaimed}, "${listing.email}", ${Date.now()});`,
+    `INSERT INTO post (title, description, address, city, state, zipCode, isClaimed, emailAddress, createdAt) VALUES ("${listing.title}", "${listing.description}", "${listing.address}","${listing.city}", "${listing.state}", "${listing.zipCode}", ${listing.isClaimed}, "${listing.email}", "${Date.now()}");`,
     (err, data) => {
       if (err) console.log("Error saving to database", err);
       console.log("succesfully saved to database");

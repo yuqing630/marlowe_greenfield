@@ -15,7 +15,8 @@ class Form extends React.Component {
       city: '',
       state: '',
       zipCode: '',
-      isClaimed: false
+      isClaimed: false,
+      photoUrl: ''
     }
 
     this.savePost = this.savePost.bind(this);
@@ -28,6 +29,7 @@ class Form extends React.Component {
     this.handleCity = this.handleCity.bind(this);
     this.handleState = this.handleState.bind(this);
     this.handleZipcode = this.handleZipcode.bind(this);
+    this.handlePhotoUrl = this.handlePhotoUrl.bind(this);
 
     //title, description, address, city, state, zip_code, is_claimed
   }
@@ -55,7 +57,8 @@ class Form extends React.Component {
       city: '',
       state: '',
       zipCode: '',
-      isClaimed: false
+      isClaimed: false,
+      photoUrl: ''
     });
   }
 
@@ -67,7 +70,7 @@ class Form extends React.Component {
 
   handleEmail(e) {
     this.setState({
-      email: e.target.value
+      emailAddress: e.target.value
     });
   }
   
@@ -107,6 +110,12 @@ class Form extends React.Component {
     });
   }
 
+  handlePhotoUrl(e) {
+    this.setState({
+      photoUrl: e.target.value
+    });
+  }
+
    render() {
     return (
 
@@ -116,7 +125,7 @@ class Form extends React.Component {
           <ControlLabel>Working example with validation</ControlLabel>
           <FormControl
             type="text"
-            value={this.state.email}
+            value={this.state.emailAddress}
             placeholder="Email"
             onChange={(e) => {this.handleEmail(e)}}
           />
@@ -155,6 +164,12 @@ class Form extends React.Component {
             value={this.state.description}
             placeholder="Description"
             onChange={(e) => {this.handleDescription(e)}}
+          />
+          <FormControl
+            type="text"
+            value={this.state.photoUrl}
+            placeholder="Link an image"
+            onChange={(e) => {this.handlePhotoUrl(e)}}
           />
           </div>
            <div className="formButton"><Button onClick={this.savePost}>Submit</Button></div>

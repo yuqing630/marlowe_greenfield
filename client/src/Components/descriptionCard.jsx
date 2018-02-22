@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 const DescriptionCard = (props) => {
-	console.log('this is the date 4', props.featuredItem);
+	// console.log('this is the date 4', props.featuredItem);
 	return (
       <div style={{backgroundColor:'#1574cd', borderRadius:'5px'}}>
         <h2>{props.featuredItem.title}</h2>

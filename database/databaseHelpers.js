@@ -47,6 +47,7 @@ connection.query(`CREATE TABLE IF NOT EXISTS post (
   city VARCHAR(25),
   state VARCHAR(2),
   zipCode VARCHAR(6),
+  phone VARCHAR(12),
   isClaimed BOOLEAN,
   emailAddress VARCHAR(50),
   createdAt INTEGER,

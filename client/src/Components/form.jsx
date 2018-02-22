@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {FormControl, FormGroup, ControlLabel, Button} from 'react-bootstrap';
 
 
 class Form extends React.Component {
@@ -32,10 +33,11 @@ class Form extends React.Component {
   }
 
   savePost(e) {
-    e.preventDefault();
+    e.preventDefault()
     axios.post('/savepost', this.state)
       .then( (response) =>{
         console.log('Post has been saved.', response);
+        this.clearFields();
         this.props.refresh();
       })
       .catch(function(error) {
@@ -105,30 +107,59 @@ class Form extends React.Component {
     });
   }
 
-  render() {
+   render() {
     return (
-    <div className>  
+
+      <div className="form">
       <form>
-        Username:
-        <input type="text" placeholder="Username"></input>
-         Email:
-        <input value={this.state.email} type="text" placeholder="Username" onChange={(e) => {this.handleEmail(e)}}></input>
-        Title:
-        <input value={this.state.title} type="text" placeholder="Title" onChange={(e) => {this.handleTitle(e)}}required></input>
-        Description:
-        <input value={this.state.description} type="text" placeholder="Description" onChange={(e) => {this.handleDescription(e)}} required></input>
-        Address:
-        <input value={this.state.address} type="text" placeholder="Address" onChange={(e) => {this.handleAddress(e)}} required></input>
-        City:
-        <input value={this.state.city} type="text" placeholder="City" onChange={(e) => {this.handleCity(e)}} required></input>
-        State:
-        <input value={this.state.state} type="text" placeholder="State" onChange={(e) => {this.handleState(e)}} required></input>
-        Zipcode:
-        <input value={this.state.zipCode} type="text" placeholder="Zip Code" onChange={(e) => {this.handleZipcode(e)}} required></input>
-        <button onClick={this.savePost} >Submit</button>
+
+          <ControlLabel>Working example with validation</ControlLabel>
+          <FormControl
+            type="text"
+            value={this.state.email}
+            placeholder="Email"
+            onChange={(e) => {this.handleEmail(e)}}
+          />
+          <FormControl
+            type="text"
+            value={this.state.title}
+            placeholder="Title"
+            onChange={(e) => {this.handleTitle(e)}}
+          />
+          <FormControl
+            type="text"
+            value={this.state.description}
+            placeholder="Description"
+            onChange={(e) => {this.handleDescription(e)}}
+          />
+          <FormControl
+            type="text"
+            value={this.state.address}
+            placeholder="Stree Address"
+            onChange={(e) => {this.handleAddress(e)}}
+          />
+          <FormControl
+            type="text"
+            value={this.state.city}
+            placeholder="City"
+            onChange={(e) => {this.handleCity(e)}}
+          />
+          <FormControl
+            type="text"
+            value={this.state.state}
+            placeholder="State"
+            onChange={(e) => {this.handleState(e)}}
+          />
+          <FormControl
+            type="text"
+            value={this.state.state}
+            placeholder="ZipCode"
+            onChange={(e) => {this.handleZipcode(e)}}
+          />
+           <div className="formButton"><Button onClick={this.savePost}>Submit</Button></div>
       </form>
       </div>
-    )
+    );
   }
 }
 

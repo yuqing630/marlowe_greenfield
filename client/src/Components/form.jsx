@@ -1,8 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import {FormControl, FormGroup, ControlLabel, Button} from 'react-bootstrap';
-
-
+import Trigger from "../components/responsiveButton.jsx";
 class Form extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +17,6 @@ class Form extends React.Component {
       isClaimed: false,
       photoUrl: ''
     }
-
     this.savePost = this.savePost.bind(this);
     this.clearFields = this.clearFields.bind(this);
     this.handleUsername = this.handleUsername.bind(this);
@@ -30,23 +28,21 @@ class Form extends React.Component {
     this.handleState = this.handleState.bind(this);
     this.handleZipcode = this.handleZipcode.bind(this);
     this.handlePhotoUrl = this.handlePhotoUrl.bind(this);
-
     //title, description, address, city, state, zip_code, is_claimed
   }
-
   savePost(e) {
     e.preventDefault()
     axios.post('/savepost', this.state)
       .then( (response) =>{
         console.log('Post has been saved.', response);
         this.clearFields();
-        this.props.refresh();
+        this.props.showModal();
+        //this.props.refresh();
       })
       .catch(function(error) {
         console.log('There was an error saving this post.', error);
       })
   }
-
   clearFields() {
     this.setState({
       username: '',
@@ -61,64 +57,53 @@ class Form extends React.Component {
       photoUrl: ''
     });
   }
-
   handleUsername(e) {
     this.setState({
       username: e.target.value
     });
   }
-
   handleEmail(e) {
     this.setState({
       emailAddress: e.target.value
     });
   }
-
   handleTitle(e) {
     this.setState({
       title: e.target.value
     });
   }
-
   handleDescription(e) {
     this.setState({
       description: e.target.value
     });
   }
-
   handleAddress(e) {
     this.setState({
       address: e.target.value
     });
   }
-
   handleCity(e) {
     this.setState({
       city: e.target.value
     });
   }
-
   handleState(e) {
     this.setState({
       state: e.target.value
     });
   }
-
   handleZipcode(e) {
     this.setState({
       zipCode: e.target.value
     });
   }
-
   handlePhotoUrl(e) {
     this.setState({
       photoUrl: e.target.value
     });
   }
-
    render() {
     return (
-
       <div className="form">
           <form>
           <div className="formFields">
@@ -172,7 +157,7 @@ class Form extends React.Component {
             onChange={(e) => {this.handlePhotoUrl(e)}}
           />
           </div>
-           <div className="formButton"><Button onClick={this.savePost}>Submit</Button></div>
+          <div className="formButton"><Button onClick={this.savePost}>Submit</Button></div>
       </form>
       </div>
     );

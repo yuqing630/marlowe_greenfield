@@ -29,5 +29,6 @@ CREATE TABLE post (
   isClaimed BOOLEAN,
   emailAddress VARCHAR(50),
   createdAt INTEGER,
+  photoUrl VARCHAR(512),
   PRIMARY KEY (id)
 )

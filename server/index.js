@@ -30,7 +30,7 @@ app.post("/savepost", function(req, res) {
   var listing = req.body
   console.log("saving to database...");
   db.query(
-    `INSERT INTO post (title, description, address, city, state, zipCode, isClaimed, createdAt) VALUES ("${listing.title}", "${listing.description}", "${listing.address}","${listing.city}", "${listing.state}", "${listing.zipCode}", ${listing.isClaimed}, ${Date.now()});`,
+    `INSERT INTO post (title, description, address, city, state, zipCode, isClaimed, emailAddress, createdAt) VALUES ("${listing.title}", "${listing.description}", "${listing.address}","${listing.city}", "${listing.state}", "${listing.zipCode}", ${listing.isClaimed}, "${listing.email}", ${Date.now()});`,
     (err, data) => {
       if (err) console.log("Error saving to database", err);
       console.log("succesfully saved to database");
@@ -39,7 +39,7 @@ app.post("/savepost", function(req, res) {
   );
 });
 
-//This route handles updating a post that has been claimed by the user 
+//This route handles updating a post that has been claimed by the user
 app.post('/updateentry', function(req, res){
   console.log('updating entry...')
   var postID = req.body.postID

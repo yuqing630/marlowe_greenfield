@@ -8,7 +8,8 @@ var moment = require('moment');
 
 app.use(express.static(__dirname + "/../client/dist"));
 app.use(bodyParser.json());
-app.use(session({ secret: 'this-is-a-secret-token', cookie: {maxAge: 60000} }));
+app.use(session({ secret: 'this-is-a-secret-token', cookie: {maxAge: 60000}, resave: true,  saveUninitialized: true }));
+
 
 // Due to express, when you load the page, it doesnt make a get request to '/', it simply serves up the dist folder
 
@@ -60,18 +61,18 @@ app.post('/updateentry', function(req, res){
 /************************************************************/
 app.post('/signup', function(req, res) {
   var sqlQuery = `INSERT INTO claimer (claimerUsername, claimerZipCode, cPassword) VALUES (?, ?, ?)`;
-  var placeholderValues = [req.body.username, req.body.password, req.body.zipcode];
+  var placeholderValues = ["adam", 10017, "1234"];
   db.query(sqlQuery, placeholderValues, function(error) {
     if (error) {
       throw error;
     } else {
-      res.sendStatus(201);
+      res.end();
     }
   })
 })
 
 app.post('/login', function(req, res) {
-  var sqlQuery = `SELECT username FROM claimer WHERE claimerUsername = "${req.body.username}" AND cPassword = "${req.body.password}"`;
+  var sqlQuery = `SELECT FROM claimer WHERE claimerUsername = "${req.body.username}" AND cPassword = "${req.body.password}"`;
   db.query(sqlQuery, function(error, results) {
     if (error) {
       throw error;
@@ -82,7 +83,7 @@ app.post('/login', function(req, res) {
         req.session.username = req.body.username
         req.session.username = req.body.username
         });
-      res.sendStatus(201);
+      res.send(0);
     }
   })
 })

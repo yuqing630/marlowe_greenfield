@@ -50,6 +50,7 @@ connection.query(`CREATE TABLE IF NOT EXISTS post (
   isClaimed BOOLEAN,
   emailAddress VARCHAR(50),
   createdAt INTEGER,
+  photoUrl VARCHAR(512),
   PRIMARY KEY (id)
 )`, (err, res) => {
 if (err) console.log(err)

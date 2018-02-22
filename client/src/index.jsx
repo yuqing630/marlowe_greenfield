@@ -60,6 +60,7 @@ class App extends React.Component {
       });
   }
   render() {
+    console.log('this is the state of show', this.state.show)
     return (
       <div>
         <h4>Our Fantastical Greenfield Project</h4>
@@ -72,9 +73,12 @@ class App extends React.Component {
               />
             </ReactBootstrap.Col>
             <ReactBootstrap.Col className="pass" md={6}>
-             {this.state.show === false ? <Form refresh={this.retrievePosts} /> :  <DescriptionCard
-                featuredItem = {this.state.featuredItem} claimHandler={this.handleClaim}
-            /> }
+             {this.state.show === false 
+              ? <Form refresh={this.retrievePosts} /> 
+              :  <DescriptionCard
+                    featuredItem = {this.state.featuredItem} 
+                    claimHandler={this.handleClaim}
+                  /> }
             </ReactBootstrap.Col>
           </ReactBootstrap.Row>
         </ReactBootstrap.Grid>

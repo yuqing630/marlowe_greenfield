@@ -2,6 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var request = require("request");
 var db = require("../database/databaseHelpers");
+var session = require('express-session')
 var app = express();
 var moment = require('moment');
 
@@ -49,6 +50,34 @@ app.post('/updateentry', function(req, res){
     if(err) console.log('Unable to claim item :(', err)
     console.log('Claimned post with id: ' + postID+"!")
     res.end()
+  })
+})
+
+app.post('/signup', function(req, res) {
+  var sqlQuery = `INSERT INTO claimer (claimerUsername, claimerZipCode, cPassword) VALUES (?, ?, ?)`;
+  var placeholderValues = [req.body.username, req.body.password, req.body.zipcode];
+  db.query(sqlQuery, placeholderValues, function(error) {
+    if (error) {
+      throw error;
+    } else {
+      res.sendStatus(201);
+    }
+  })
+})
+
+app.post('/login', function(req, res) {
+  var sqlQuery = `SELECT username FROM claimer WHERE claimerUsername = "${req.body.username}" AND cPassword = "${req.body.password}"`;
+  db.query(sqlQuery, function(error, results) {
+    if (error) {
+      throw error;
+    } else if (results.length === 0) {
+      console.log("Failed to login")
+    } else {
+        req.session.regenerate((err) => {
+        req.session.username = req.body.username
+        });
+      res.sendStatus(201);
+    }
   })
 })
 

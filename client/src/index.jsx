@@ -84,4 +84,4 @@ class App extends React.Component {
   }
 }
 console.log('hello');
-ReactDOM.render(<LoginPage />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById("app"));

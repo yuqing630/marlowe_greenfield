@@ -3,6 +3,7 @@ var bodyParser = require("body-parser");
 var request = require("request");
 var db = require("../database/databaseHelpers");
 var session = require('express-session')
+var twilio = require('twilio')
 var app = express();
 var moment = require('moment');
 
@@ -89,6 +90,26 @@ app.post('/login', function(req, res) {
     }
   })
 })
+
+app.post('/chat', function(req,res){
+
+var accountSid = 'AC295216dc5e0bd27a16271da275b0c36f'; // Your Account SID from www.twilio.com/console
+var authToken = '14a805bc4b3f3c784aaa5e4e16acc449';   // Your Auth Token from www.twilio.com/console
+
+var twilio = require('twilio');
+var client = new twilio(accountSid, authToken);
+
+client.messages.create({
+    body: 'Hello from Node',
+    to: '+19296660205',  // Text this number
+    from: '+14255054003 ' // From a valid Twilio number
+})
+.then((message) => {
+  console.log(message.sid)
+  res.end()
+  })
+})
+
 
 var _PORT = process.env.PORT || 3000;
 app.listen(_PORT, function() {

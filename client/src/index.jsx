@@ -38,9 +38,24 @@ class App extends React.Component {
     // this.savePosts();
   }
   changeFeatured(listItem) {
-    this.setState({ featuredItem: listItem,
-                    show: !this.state.show
+    if (this.state.show === false){
+      this.setState({ featuredItem: listItem,
+                    show: true
      });
+    }
+    else if(this.state.show === true){
+      if (this.state.featuredItem.id === listItem.id){
+        this.setState({
+          show: false
+        })
+      }else{
+        this.setState({
+          featuredItem: listItem,
+          show: true
+        })
+      }
+    }
+    
   }
   retrievePosts() {
     axios

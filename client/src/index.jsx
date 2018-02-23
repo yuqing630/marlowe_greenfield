@@ -24,8 +24,8 @@ class App extends React.Component {
         id: null
       },
       show: false,
-      latitude: -34.397,
-      longitude: 150.644
+      latitude: 40.750576,
+      longitude: -73.976437
     };
     this.retrievePosts = this.retrievePosts.bind(this);
     // this.savePosts = this.savePosts.bind(this);

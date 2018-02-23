@@ -1,3 +1,13 @@
+.listheader {
+  text-align: center;
+  color: #e8532e;
+  font-family: monospace;
+}
+
+.listheader h2 {
+  color: #e8532e;
+}
+
 .listItem {
   background-color: #FFC97C;
   padding: 10px 50px 20px;
@@ -7,6 +17,9 @@
   box-shadow: -7px 4px 5px #d0caca;
   box-sizing: inherit;
   margin: 10px;
+  font-size: 2rem;
+  line-height: 2.4rem;
+  font-family: monospace
 }
 
 .listItem div {
@@ -18,13 +31,6 @@
   font-weight: bold;
 } 
 
-
-.listHeader {
-  color: #282828;
-  fill: #282828;
-  font-size: 2rem;
-  line-height: 2.4rem;
-}
 
 .listDescription {
   color: #282828;

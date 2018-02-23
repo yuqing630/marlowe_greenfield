@@ -20,6 +20,10 @@ app.use(
 
 // Due to express, when you load the page, it doesnt make a get request to '/', it simply serves up the dist folder
 
+/************************************************************/
+//                   General Routes
+/************************************************************/
+
 //This route fetches all posting from the database and sends them to the client
 //later this function should receive the zip code of the authenticated user and display
 //only relevant postings to the user
@@ -110,6 +114,10 @@ app.post("/login", function(req, res) {
   });
 });
 
+/************************************************************/
+//                   twilio
+/************************************************************/
+
 app.post("/chat", function(req, res) {
   var accountSid = "AC295216dc5e0bd27a16271da275b0c36f"; // Your Account SID from www.twilio.com/console
   var authToken = "14a805bc4b3f3c784aaa5e4e16acc449"; // Your Auth Token from www.twilio.com/console
@@ -118,7 +126,7 @@ app.post("/chat", function(req, res) {
   client.messages
     .create({
       body: `Thank you for claiming ${req.body.title} and helping the world !`,
-      to: '+19296660205', // Text this number
+      to: '+19296660205', // Text this number - this is hard coded unless you'd like to upgrade your account =) 
       from: "+14255054003 " // From a valid Twilio number
     })
     .then(message => {
@@ -127,7 +135,7 @@ app.post("/chat", function(req, res) {
       client2.messages
         .create({
           body: `Your posting ${req.body.title} has been claimed ! You'll be contacted soon !`,
-          to: +'19162567256', // Text this number
+          to: +'19162567256', // Text this number this is hard coded unless you'd like to upgrade your account =) 
           from: "+14255054003 " // From a valid Twilio number
         })
         .then(message => {

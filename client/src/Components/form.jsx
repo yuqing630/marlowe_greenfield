@@ -7,7 +7,7 @@ class Form extends React.Component {
     super(props);
     this.state = {
       username: '',
-      emailAddress: '',
+      phone: '',
       title: '',
       description: '',
       address: '',
@@ -20,7 +20,7 @@ class Form extends React.Component {
     this.savePost = this.savePost.bind(this);
     this.clearFields = this.clearFields.bind(this);
     this.handleUsername = this.handleUsername.bind(this);
-    this.handleEmail = this.handleEmail.bind(this);
+    this.handlePhone = this.handlePhone.bind(this);
     this.handleTitle = this.handleTitle.bind(this);
     this.handleDescription = this.handleDescription.bind(this);
     this.handleAddress = this.handleAddress.bind(this);
@@ -46,7 +46,7 @@ class Form extends React.Component {
   clearFields() {
     this.setState({
       username: '',
-      emailAddress: '',
+      phone: '',
       title: '',
       description: '',
       address: '',
@@ -62,9 +62,9 @@ class Form extends React.Component {
       username: e.target.value
     });
   }
-  handleEmail(e) {
+  handlePhone(e) {
     this.setState({
-      emailAddress: e.target.value
+      phone: e.target.value
     });
   }
   handleTitle(e) {
@@ -110,12 +110,6 @@ class Form extends React.Component {
           <ControlLabel>Working example with validation</ControlLabel>
           <FormControl
             type="text"
-            value={this.state.emailAddress}
-            placeholder="Email"
-            onChange={(e) => {this.handleEmail(e)}}
-          />
-          <FormControl
-            type="text"
             value={this.state.title}
             placeholder="Title"
             onChange={(e) => {this.handleTitle(e)}}
@@ -143,6 +137,12 @@ class Form extends React.Component {
             value={this.state.zipCode}
             placeholder="ZipCode"
             onChange={(e) => {this.handleZipcode(e)}}
+          />
+        <FormControl
+          type="text"
+          value={this.state.phone}
+          placeholder="Phone Number"
+          onChange={(e) => {this.handlePhone(e)}}
           />
           <FormControl style={{height: '125px'}}
             type="text"

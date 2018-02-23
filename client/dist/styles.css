@@ -43,7 +43,7 @@
 .jumbotron {
   text-align: center;
   color: black;
-  height: 400px;
+  height: 575px;
   background-image: url('images/allHandsIn.jpg');
   /* background-size: auto 100%; */
   /* background-position: 0 0; */
@@ -52,6 +52,11 @@
     -moz-background-size: 100% 100%;
     -o-background-size: 100% 100%;
     background-size: 100% 100%;
+}
+
+.mainText{
+  position: relative;
+  top: 25%;
 }
 
 .map {

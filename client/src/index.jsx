@@ -23,7 +23,9 @@ class App extends React.Component {
         description: null,
         id: null
       },
-      show: false
+      show: false,
+      latitude: -34.397,
+      longitude: 150.644
     };
     this.retrievePosts = this.retrievePosts.bind(this);
     // this.savePosts = this.savePosts.bind(this);
@@ -33,15 +35,25 @@ class App extends React.Component {
     this.lgShow = this.lgShow.bind(this);
     this.lgClose = this.lgClose.bind(this);
   }
+
   componentDidMount() {
     this.retrievePosts();
-    // this.savePosts();
   }
+
   changeFeatured(listItem) {
     if (this.state.show === false){
       this.setState({ featuredItem: listItem,
                     show: true
      });
+      let address = `${listItem.address}, ${listItem.city}, ${listItem.state} ${listItem.zipCode}`;
+      axios.post('/latlong', {address: address})
+        .then(result => {
+          console.log(result.data.lat, result.data.long);
+          this.setState({
+            latitude: Number(result.data.lat),
+            longitude: Number(result.data.long)
+          })
+        })
     }
     else if(this.state.show === true){
       if (this.state.featuredItem.id === listItem.id){
@@ -57,6 +69,7 @@ class App extends React.Component {
     }
     
   }
+
   retrievePosts() {
     axios
       .get("/fetch")
@@ -69,6 +82,7 @@ class App extends React.Component {
         console.log("There was an error retrieving posts.", error);
       });
   }
+
   handleClaim(claimedPostID) {
     console.log("claimedPost clicked", claimedPostID);
     axios
@@ -86,17 +100,21 @@ class App extends React.Component {
         }).then(messageSent => console.log('text messages sent!'))
       });
   }
+
+
   lgClose() {
     this.setState({
       lgShow: false
     });
     this.retrievePosts();
   }
+
   lgShow(){
     this.setState({
       lgShow: true
     });
   }
+
   render() {
     console.log('this is the state of show', this.state.show);
     return (
@@ -132,6 +150,8 @@ class App extends React.Component {
           containerElement={<div style={{ height: `400px` }} />}
           mapElement={<div style={{ height: `100%` }}
         />}
+          latitude={this.state.latitude}
+          longitude={this.state.longitude}
         />
         </div>
 

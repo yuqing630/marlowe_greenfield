@@ -1,12 +1,13 @@
 var mysql = require('mysql');
 // var pg = require('pg');
+var config = require('../config.js')
 
 var connection = mysql.createConnection({
-  host: 'greenfield-marlowe.coxryxwvinqh.us-east-1.rds.amazonaws.com',
-  user: 'marlowe',
-  password: 'plantlife',
-  port: '3306',
-  database: 'marlowe'
+  host: config.host,
+  user: config.user,
+  password: config.password,
+  port: config.port,
+  database: config.database
 });
 
 connection.connect((err) => {

@@ -10,8 +10,8 @@ import DescriptionCard from "./components/descriptionCard.jsx";
 import LoginPage from "./components/login.jsx"
 import Signup from "./components/signup.jsx"
 import MapComponent from "./components/googleMaps.jsx"
-import Trigger from "./components/responsiveButton.jsx";
-
+import Trigger from "./components/responsiveButton.jsx"
+import { Link, DirectLink, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -34,6 +34,7 @@ class App extends React.Component {
     this.resetFormView = this.handleClaim.bind(this);
     this.lgShow = this.lgShow.bind(this);
     this.lgClose = this.lgClose.bind(this);
+    this.ScrollTo = this.ScrollTo.bind(this);
   }
 
   componentDidMount() {
@@ -115,12 +116,17 @@ class App extends React.Component {
     });
   }
 
+  ScrollTo(){
+      scroll.scrollTo(400);
+  }
+ 
+
   render() {
     console.log('this is the state of show', this.state.show);
     return (
       <div>
-      <NavigationBar />
-      <Maintron />
+      <NavigationBar onClick={this.ScrollTo}/>
+      <Maintron scrollTo={this.ScrollTo}/>
         <ReactBootstrap.Grid className="show-grid">
           <ReactBootstrap.Row>
             <ReactBootstrap.Col md={6}>

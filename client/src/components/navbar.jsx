@@ -20,7 +20,7 @@ class NavigationBar extends React.Component {
           </Navbar.Brand>
         </Navbar.Header>
         <Nav>
-          <NavItem eventKey={1} href="#">
+          <NavItem eventKey={1} href="#" onClick={() => props.scrollTo()}>
             Recent Posts
           </NavItem>
           <NavItem eventKey={2} href="#">

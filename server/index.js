@@ -44,7 +44,7 @@ app.post("/savepost", function(req, res) {
     }
   );
 });
-
+//blah blah
 //This route handles updating a post that has been claimed by the user
 app.post('/updateentry', function(req, res){
   console.log('updating entry...')

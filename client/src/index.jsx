@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import axios from "axios";
+
 import NavigationBar from "./components/navbar.jsx";
 import Maintron from "./components/jumbotron.jsx";
 import List from "./components/list.jsx";
@@ -7,7 +9,7 @@ import Form from "./components/form.jsx";
 import DescriptionCard from "./components/descriptionCard.jsx";
 import LoginPage from "./components/login.jsx"
 import Signup from "./components/signup.jsx"
-import axios from "axios";
+import MapComponent from "./components/googleMaps.jsx"
 import Trigger from "./components/responsiveButton.jsx";
 
 class App extends React.Component {
@@ -102,6 +104,19 @@ class App extends React.Component {
           </ReactBootstrap.Row>
         </ReactBootstrap.Grid>
         <Trigger show={this.state.lgShow} onHide={this.lgClose} />
+         <div className="map">
+         
+        <MapComponent
+          isMarkerShown
+          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `400px` }} />}
+          mapElement={<div style={{ height: `100%` }}
+        />}
+        />
+        </div>
+
+
       </div>
     );
   }

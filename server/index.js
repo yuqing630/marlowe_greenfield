@@ -6,6 +6,7 @@ var session = require("express-session");
 var twilio = require("twilio");
 var app = express();
 var moment = require("moment");
+var geo = require("./geoHelper.js")
 
 app.use(express.static(__dirname + "/../client/dist"));
 app.use(bodyParser.json());
@@ -59,6 +60,14 @@ app.post("/savepost", function(req, res) {
       res.end();
     }
   );
+});
+
+app.post("/latlong", function(req, res) {
+  geo(req.body.address, function(lat, long) {
+    let result = {lat: lat, long: long};
+    res.send(result);
+    res.end();
+  });
 });
 
 //This route handles updating a post that has been claimed by the user

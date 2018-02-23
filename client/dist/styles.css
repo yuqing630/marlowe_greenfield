@@ -27,7 +27,13 @@
   color: black;
   height: 400px;
   background-image: url('images/allHandsIn.jpg');
-  background-size: 100%;
+  /* background-size: auto 100%; */
+  /* background-position: 0 0; */
+  background-repeat: no-repeat;
+  -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
 }
 
 .map {

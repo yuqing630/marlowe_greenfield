@@ -1,17 +1,28 @@
 .listItem {
-  padding-top: 1.8rem;
-  padding-bottom: 1.2rem;
+  background-color: #FFC97C;
+  padding: 10px 50px 20px;
   display: flex;
-  border-color: #DCDEDD;
-  border-bottom: 0.1rem solid;
+  border: 1px solid #DCDEDD;
+  border-radius: 8px;
+  box-shadow: -7px 4px 5px #d0caca;
   box-sizing: inherit;
+  margin: 10px;
 }
+
+.listItem div {
+  color: #dc6f54;
+}
+
+.listItem:hover {
+  box-shadow: -7px 4px 5px #504f4f;
+  font-weight: bold;
+} 
+
 
 .listHeader {
   color: #282828;
   fill: #282828;
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 2rem;
   line-height: 2.4rem;
 }
 
@@ -20,6 +31,7 @@
   fill: #282828;
   font-size: 1.2rem;
   line-height: 2.4rem;
+  padding: 10px 0px 0px 20px;
 }
 
 .jumbotron {

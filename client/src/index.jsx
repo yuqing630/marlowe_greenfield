@@ -67,7 +67,7 @@ class App extends React.Component {
         })
       }
     }
-    
+
   }
 
   retrievePosts() {
@@ -131,10 +131,10 @@ class App extends React.Component {
               />
             </ReactBootstrap.Col>
             <ReactBootstrap.Col className="pass" md={6}>
-             {this.state.show === false 
-              ? <Form showModal={this.lgShow}/> 
+             {this.state.show === false
+              ? <Form showModal={this.lgShow}/>
               :  <DescriptionCard
-                    featuredItem = {this.state.featuredItem} 
+                    featuredItem = {this.state.featuredItem}
                     claimHandler={this.handleClaim}
                   /> }
             </ReactBootstrap.Col>
@@ -142,7 +142,7 @@ class App extends React.Component {
         </ReactBootstrap.Grid>
         <Trigger show={this.state.lgShow} onHide={this.lgClose} />
          <div className="map">
-         
+
         <MapComponent
           isMarkerShown
           googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"

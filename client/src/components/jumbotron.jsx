@@ -10,7 +10,7 @@ const Maintron = (props) => {
         NOTE SURE WHERE THE BUTTON SHOULD LEAD TO.
       </p>
       <p>
-        <Button bsStyle="primary">Learn more</Button>
+        <Button onClick={this.props.ScrollTo()}bsStyle="primary">Learn more</Button>
       </p>
     </Jumbotron>
   )

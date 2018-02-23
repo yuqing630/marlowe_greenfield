@@ -11,8 +11,7 @@ import LoginPage from "./components/login.jsx"
 import Signup from "./components/signup.jsx"
 import MapComponent from "./components/googleMaps.jsx"
 import Trigger from "./components/responsiveButton.jsx"
-import * as Scroll from 'react-scroll';
-let scroll     = Scroll.animateScroll;
+import { Link, DirectLink, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -126,7 +125,7 @@ class App extends React.Component {
     console.log('this is the state of show', this.state.show);
     return (
       <div>
-      <NavigationBar />
+      <NavigationBar onClick={this.ScrollTo}/>
       <Maintron scrollTo={this.ScrollTo}/>
         <ReactBootstrap.Grid className="show-grid">
           <ReactBootstrap.Row>

@@ -37,7 +37,6 @@ class Form extends React.Component {
         console.log('Post has been saved.', response);
         this.clearFields();
         this.props.showModal();
-        //this.props.refresh();
       })
       .catch(function(error) {
         console.log('There was an error saving this post.', error);

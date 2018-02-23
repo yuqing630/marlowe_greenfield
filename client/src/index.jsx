@@ -80,6 +80,10 @@ class App extends React.Component {
         this.setState({
           show:!this.state.show
         })
+
+        axios.post('/chat', {
+          title: this.state.featuredItem.title
+        }).then(messageSent => console.log('text messages sent!'))
       });
   }
   lgClose() {

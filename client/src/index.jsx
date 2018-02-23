@@ -118,7 +118,7 @@ class App extends React.Component {
   }
 
   ScrollTo(){
-      scroll.scrollTo(100);
+      scroll.scrollTo(400);
   }
 
 

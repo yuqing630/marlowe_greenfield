@@ -1,8 +1,11 @@
 import React from 'react';
 import moment from 'moment';
+import {Popover} from 'react-bootstrap';
+
 const DescriptionCard = (props) => {
-	// console.log('this is the date 4', props.featuredItem);
+	
 	return (
+    <Popover id="popover-positioned-right" title="Popover right">
       <div style={{backgroundColor:'#1574cd', borderRadius:'5px'}}>
         <h2>{props.featuredItem.title}</h2>
         <p>{props.featuredItem.city}, {props.featuredItem.state} {props.featuredItem.address}</p>
@@ -12,6 +15,7 @@ const DescriptionCard = (props) => {
         <img height='150px' src={props.featuredItem.photoUrl}/>
         <button onClick={() => props.claimHandler(props.featuredItem.id)}>Claim</button>
       </div>
+    </Popover>
 	)
 }
 

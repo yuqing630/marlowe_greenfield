@@ -4,14 +4,16 @@ import {Jumbotron, Button} from 'react-bootstrap';
 const Maintron = (props) => {
   return (
     <Jumbotron >
+    <div className="mainText">
       <h1>Support your community today.</h1>
       <p>
         ENTER SOME WORDS OF ENCOURAGEMENT HERE AND
         NOTE SURE WHERE THE BUTTON SHOULD LEAD TO.
       </p>
       <p>
-        <Button onClick={() => props.scrollTo()}bsStyle="primary"></Button>
+        <Button onClick={() => props.scrollTo()}bsStyle="primary">Help Your Community</Button>
       </p>
+      </div>
     </Jumbotron>
   )
 
